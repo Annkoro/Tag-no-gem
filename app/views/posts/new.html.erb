@@ -1,0 +1,30 @@
+<div class="container">
+  <div class="row">
+    <div class="col-md-5 col-sm-10 mx-2 mx-sm-auto shadow-lg rounded px-0 my-5">
+      <h2 class="text-dark bg-light p-4 mb-0"><i class="fas fa-pen"></i>新規投稿</h2>
+        <div class="form-body p-4">
+          <% if @post.errors.any? %>
+            <%= @post.errors.count %>件のエラーが発生しました
+            <ul>
+              <% @post.errors.full_messages.each do |message| %>
+              <li><%= message %></li>
+              <% end %>
+            </ul>
+          <% end %>
+          <%= form_with model: @post do |f| %>
+            <h4 class="form-group" >
+              <%= f.label :title, "タイトル" %>
+              <%= f.text_field :title, class:"form-control", placeholder: "5文字以上30文字以内" %>
+            </h4>
+            <h4 class="form-group">
+              <%= f.label :body, "内容" %>
+              <%= f.text_area :body, class:"form-control", rows:"6", placeholder: "10文字以上400文字以内" %>
+            </h4>
+            <div class="form-group">
+              <%= f.submit '投稿', class: "btn btn-lg btn-block btn-info mt-4" %>
+            </div>
+          <% end %>
+      </div>
+    </div>
+  </div>
+</div>
