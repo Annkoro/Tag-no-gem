@@ -44,4 +44,8 @@ class PostsController < ApplicationController
     params.require(:post).permit(:title, :body)
   end
 
+  def tag_names
+    params[:post][:tag_names].split(' ').uniq
+  end
+
 end
